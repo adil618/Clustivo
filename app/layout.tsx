@@ -2,7 +2,7 @@ import { Geist_Mono, Inter, Roboto } from "next/font/google"
 
 import "./globals.css"
 import { cn } from "@/lib/utils"
-import AppProviders from "@/components/app-providers"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const robotoHeading = Roboto({ subsets: ["latin"], variable: "--font-heading" })
 
@@ -31,7 +31,7 @@ export default function RootLayout({
       )}
     >
       <body>
-        <AppProviders>{children}</AppProviders>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>{children}</ThemeProvider>
       </body>
     </html>
   )
