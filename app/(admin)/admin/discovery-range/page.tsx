@@ -3,7 +3,7 @@ import React from 'react'
 
 function DiscoveryRangePage() {
     return (
-        <div>Discovery Range Page</div>
+        <div>DiscoveryRangePage</div>
     )
 }
 

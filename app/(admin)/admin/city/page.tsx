@@ -11,6 +11,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Modal } from "@/components/ui/modal";
 
 import {
     Table,
@@ -26,6 +27,8 @@ export default function CitiesPage() {
     const [name, setName] = useState<string>("");
     const [editId, setEditId] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
+    const [open, setOpen] = useState<boolean>(false);
+    const [searchQuery, setSearchQuery] = useState<string>("");
 
     // Fetch Cities
     const fetchCities = async () => {
@@ -59,6 +62,7 @@ export default function CitiesPage() {
             }
 
             setName("");
+            setOpen(false);
             fetchCities();
         } catch (error) {
             console.error("Error saving city:", error);
@@ -71,6 +75,13 @@ export default function CitiesPage() {
     const handleEdit = (city: City) => {
         setName(city.name);
         setEditId(city._id);
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+        setName("");
+        setEditId(null);
     };
 
     // Delete
@@ -86,20 +97,53 @@ export default function CitiesPage() {
         }
     };
 
+    const filteredCities = cities.filter((city) =>
+        city.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div className="p-6 space-y-6">
-            {/* Add / Update */}
-            <div className="flex gap-2">
-                <Input
-                    placeholder="Enter city name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
-
-                <Button className="py-4 px-5" onClick={handleSubmit} disabled={loading}>
-                    {editId ? "Update" : "Add"}
-                </Button>
+            <div className="flex items-center justify-between">
+                <div>
+                    <h1 className="text-3xl font-bold tracking-tight">Cities</h1>
+                    <p className="text-muted-foreground mt-2">Manage cities for your application.</p>
+                </div>
+                <div className="flex items-center gap-2">
+                    <Input
+                        placeholder="Search cities..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-64"
+                    />
+                    <Button onClick={() => setOpen(true)} className="py-4 px-5">
+                        Add New City
+                    </Button>
+                </div>
             </div>
+
+            <Modal
+                title={editId ? "Edit City" : "Add New City"}
+                description={editId ? "Update the city details." : "Add a new city to the system."}
+                isOpen={open}
+                onClose={handleClose}
+            >
+                <div className="space-y-4">
+                    <Input
+                        placeholder="Enter city name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        disabled={loading}
+                    />
+                    <div className="flex justify-end space-x-2 pt-4">
+                        <Button variant="outline" onClick={handleClose} disabled={loading}>
+                            Cancel
+                        </Button>
+                        <Button onClick={handleSubmit} disabled={loading || !name.trim()}>
+                            {editId ? "Update" : "Create"}
+                        </Button>
+                    </div>
+                </div>
+            </Modal>
 
             {/* Table */}
             <div className="rounded-md border overflow-hidden">
@@ -118,14 +162,14 @@ export default function CitiesPage() {
                                     Loading...
                                 </TableCell>
                             </TableRow>
-                        ) : cities.length === 0 ? (
+                        ) : filteredCities.length === 0 ? (
                             <TableRow>
                                 <TableCell colSpan={2} className="text-center">
                                     No cities found
                                 </TableCell>
                             </TableRow>
                         ) : (
-                            cities.map((city) => (
+                            filteredCities.map((city) => (
                                 <TableRow key={city._id}>
                                     <TableCell className="font-medium">
                                         {city.name}
