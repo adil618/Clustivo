@@ -50,8 +50,8 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
-      url: "#",
+      title: "Auth Data",
+      url: "/auth",
       icon: (
         <TerminalSquareIcon
         />
@@ -59,16 +59,24 @@ const data = {
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "City",
+          url: "/admin/city",
         },
         {
-          title: "Starred",
-          url: "#",
+          title: "Area",
+          url: "/admin/area",
         },
         {
-          title: "Settings",
-          url: "#",
+          title: "Avatar",
+          url: "/admin/avatar",
+        },
+        {
+          title: "Interests",
+          url: "/admin/interests",
+        },
+        {
+          title: "Discovery Range",
+          url: "/admin/discovery-range",
         },
       ],
     },
