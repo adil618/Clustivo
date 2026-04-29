@@ -121,7 +121,7 @@ export default function Page() {
           </div>
         </header>
 
-        {/* ── Main Content ── */}
+        {/*Main Content */}
         <div className="flex flex-1 flex-col gap-6 p-6">
           {/* Page heading */}
           <div>
