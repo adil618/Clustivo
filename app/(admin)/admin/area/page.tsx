@@ -155,13 +155,12 @@ export default function AreasPage() {
                         <select
                             className="flex mt-1 h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                             value={cityId}
-                            onChange={(e) => setCityId(e.target.value)}
+                            onChange={(e) => setCityId(e.target.value as string | number)}
                             disabled={loading}
                         >
                             <option value="">Select a city...</option>
-                            {/* @ts-ignore */}
                             {cities.map((city) => (
-                                <option key={city._id || city.id} value={city._id || city.id}>
+                                <option key={city._id} value={city._id as string | number}>
                                     {city.name}
                                 </option>
                             ))}
