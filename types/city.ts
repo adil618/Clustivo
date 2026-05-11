@@ -1,5 +1,6 @@
 export interface City {
-    _id: string;
+    id?: number | string;
+    _id?: string;
     name: string;
     createdAt?: string;
     updatedAt?: string;

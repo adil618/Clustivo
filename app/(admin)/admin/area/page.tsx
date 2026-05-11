@@ -51,7 +51,8 @@ export default function AreasPage() {
     };
 
     useEffect(() => {
-        fetchData();
+        const timer = setTimeout(() => fetchData(), 0);
+        return () => clearTimeout(timer);
     }, []);
 
     // Add / Update

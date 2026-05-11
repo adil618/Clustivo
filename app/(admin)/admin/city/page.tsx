@@ -44,7 +44,8 @@ export default function CitiesPage() {
     };
 
     useEffect(() => {
-        fetchCities();
+        const timer = setTimeout(() => fetchCities(), 0);
+        return () => clearTimeout(timer);
     }, []);
 
     // Add / Update
