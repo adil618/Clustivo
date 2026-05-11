@@ -30,7 +30,7 @@ export default function RootLayout({
         robotoHeading.variable
       )}
     >
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>{children}</ThemeProvider>
       </body>
     </html>
