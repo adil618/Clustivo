@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Interest } from "@/types/interest";
+import { Star } from "lucide-react";
 import {
   getInterests,
   addInterest,
@@ -225,7 +226,7 @@ export default function InterestsPage() {
                         className="rounded-lg object-cover border"
                       />
                     ) : (
-                      <span className="text-2xl">⭐</span>
+                      <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
                     )}
                   </TableCell>
                   <TableCell className="font-medium">{item.name}</TableCell>

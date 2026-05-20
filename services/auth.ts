@@ -1,6 +1,7 @@
 import api from "@/lib/axios";
 import {
   SignupPayload,
+  LoginPayload,
   AuthResponse,
   AvailabilityResponse,
   ResendVerificationPayload,
@@ -43,7 +44,7 @@ export const signup = async (data: SignupPayload): Promise<AuthResponse> => {
 // ─── Login ────────────────────────────────────────────────────────────────────
 
 export const login = async (
-  data: Record<string, unknown>
+  data: LoginPayload
 ): Promise<AuthResponse> => {
   const res = await api.post<AuthResponse>(
     process.env.NEXT_PUBLIC_AUTH_LOGIN || "/auth/login",
