@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { forgotPassword } from "@/services/auth";
+import { Users, KeyRound } from "lucide-react";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -30,8 +31,8 @@ export default function ForgotPasswordPage() {
       <div className="w-full max-w-[420px]">
         {/* Logo */}
         <div className="flex items-center gap-2.5 mb-7">
-          <div className="w-10 h-10 rounded-[12px] bg-gradient-to-br from-[#FF6B2B] to-[#FF3D7F] flex items-center justify-center text-xl">
-            🤝
+          <div className="w-10 h-10 rounded-[12px] bg-gradient-to-br from-[#FF6B2B] to-[#FF3D7F] flex items-center justify-center">
+            <Users className="w-5 h-5 text-white" />
           </div>
           <span className="text-[22px] font-extrabold text-[#FF6B2B] tracking-tight">
             Clustivo
@@ -41,8 +42,8 @@ export default function ForgotPasswordPage() {
         {/* Card */}
         <div className="bg-[oklch(0.205_0_0)] rounded-[20px] p-7 shadow-[0_8px_40px_rgba(0,0,0,0.5)] border border-white/10">
           {/* Lock icon */}
-          <div className="w-[72px] h-[72px] rounded-full bg-[rgba(255,107,43,0.12)] border-2 border-[#FF6B2B] flex items-center justify-center mx-auto mb-5 text-3xl">
-            🔑
+          <div className="w-[72px] h-[72px] rounded-full bg-[rgba(255,107,43,0.12)] border-2 border-[#FF6B2B] flex items-center justify-center mx-auto mb-5">
+            <KeyRound className="w-8 h-8 text-[#FF6B2B]" />
           </div>
 
           <h1 className="text-2xl font-extrabold text-[#FAFAFA] text-center mb-2">

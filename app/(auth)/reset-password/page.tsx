@@ -4,6 +4,7 @@ import { useState, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { resetPassword } from "@/services/auth";
+import { Users, Lock } from "lucide-react";
 
 function ResetForm() {
   const router = useRouter();
@@ -44,8 +45,8 @@ function ResetForm() {
     <div className="flex flex-col gap-4">
       {/* Lock icon */}
       <div className="text-center">
-        <div className="w-[72px] h-[72px] rounded-full bg-[rgba(255,107,43,0.12)] border-2 border-[#FF6B2B] inline-flex items-center justify-center text-3xl mb-3.5">
-          🔒
+        <div className="w-[72px] h-[72px] rounded-full bg-[rgba(255,107,43,0.12)] border-2 border-[#FF6B2B] inline-flex items-center justify-center mb-3.5">
+          <Lock className="w-8 h-8 text-[#FF6B2B]" />
         </div>
         <h1 className="text-2xl font-extrabold text-[#FAFAFA] mb-1.5">
           Set new password
@@ -138,8 +139,8 @@ export default function ResetPasswordPage() {
       <div className="w-full max-w-[420px]">
         {/* Logo */}
         <div className="flex items-center gap-2.5 mb-7">
-          <div className="w-10 h-10 rounded-[12px] bg-gradient-to-br from-[#FF6B2B] to-[#FF3D7F] flex items-center justify-center text-xl">
-            🤝
+          <div className="w-10 h-10 rounded-[12px] bg-gradient-to-br from-[#FF6B2B] to-[#FF3D7F] flex items-center justify-center">
+            <Users className="w-5 h-5 text-white" />
           </div>
           <span className="text-[22px] font-extrabold text-[#FF6B2B] tracking-tight">
             Clustivo

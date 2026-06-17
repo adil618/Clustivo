@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Users, Star, Lock } from "lucide-react";
 import {
   checkUsernameAvailable,
   checkEmailAvailable,
@@ -20,12 +21,12 @@ import { Area } from "@/types/area";
 
 // ─── Discovery ranges ──────────────────────────────────────────────────────────
 const DISCOVERY_RANGES = [
-  { km: 2, label: "My neighbourhood", emoji: "🏘️" },
-  { km: 5, label: "My area", emoji: "🏙️" },
-  { km: 15, label: "My city", emoji: "🌆" },
-  { km: 30, label: "Greater metro", emoji: "🌃" },
-  { km: 50, label: "My region", emoji: "🗺️" },
-  { km: 100, label: "My state/province", emoji: "🗾" },
+  { km: 2, label: "My neighbourhood" },
+  { km: 5, label: "My area" },
+  { km: 15, label: "My city" },
+  { km: 30, label: "Greater metro" },
+  { km: 50, label: "My region" },
+  { km: 100, label: "My state/province" },
 ];
 
 // ─── Step progress bar ─────────────────────────────────────────────────────────
@@ -415,7 +416,7 @@ function StepInterests({ onNext, onBack }: { onNext: (ids: string[]) => void; on
                     className="rounded-md object-cover"
                   />
                 ) : (
-                  <span className="text-[28px]">⭐</span>
+                  <Star className="w-7 h-7 text-yellow-500 fill-yellow-500" />
                 )}
                 <span className="text-[12px] font-semibold text-[#FAFAFA]">
                   {interest.name}
@@ -476,7 +477,7 @@ function StepDiscovery({
             >
               <div>
                 <div className="font-bold text-[15px] text-[#FAFAFA]">{r.km} km</div>
-                <div className="text-[13px] text-[oklch(0.708_0_0)]">{r.label} {r.emoji}</div>
+                <div className="text-[13px] text-[oklch(0.708_0_0)]">{r.label}</div>
               </div>
               {active && (
                 <span className="w-[22px] h-[22px] rounded-full bg-[#FF6B2B] flex items-center justify-center text-white text-[13px]">
@@ -490,12 +491,12 @@ function StepDiscovery({
 
       {/* Privacy note */}
       <div className="px-3.5 py-3 rounded-[12px] bg-[rgba(255,107,43,0.08)] border border-[rgba(255,107,43,0.25)] flex gap-2.5 items-start text-[13px] text-[#FDBA74]">
-        <span>🔒</span>
+        <Lock className="w-4 h-4 shrink-0 text-[#FF6B2B] mt-0.5" />
         <span>Your location is private. People only see approximate distance.</span>
       </div>
 
       <GradientBtn onClick={() => onFinish(selected)} disabled={submitting}>
-        {submitting ? "Creating account…" : "🎉 Find My People"}
+        {submitting ? "Creating account…" : "Find My People"}
       </GradientBtn>
       <button
         type="button"
@@ -575,8 +576,8 @@ export function SignupForm() {
       <div className="w-full max-w-[420px]">
         {/* Logo */}
         <div className="flex items-center gap-2.5 mb-6">
-          <div className="w-10 h-10 rounded-[12px] bg-gradient-to-br from-[#FF6B2B] to-[#FF3D7F] flex items-center justify-center text-xl">
-            🤝
+          <div className="w-10 h-10 rounded-[12px] bg-gradient-to-br from-[#FF6B2B] to-[#FF3D7F] flex items-center justify-center">
+            <Users className="w-5 h-5 text-white" />
           </div>
           <span className="text-[22px] font-extrabold text-[#FF6B2B] tracking-tight">
             Clustivo
