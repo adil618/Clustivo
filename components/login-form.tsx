@@ -22,7 +22,11 @@ export function LoginForm() {
     setLoading(true);
     try {
       const res = await login({ email, password });
-      const token = res?.token ?? res?.accessToken ?? res?.data?.token;
+      const token =
+        res?.token ??
+        res?.accessToken ??
+        res?.data?.token ??
+        res?.data?.accessToken;
       if (token) {
         localStorage.setItem("token", token);
         document.cookie = `auth-token=${token}; path=/; SameSite=Strict`;
